@@ -22,7 +22,7 @@ def protect(episode):
     }
     R = S.post(URL, data=PARAMS)
     action_fox.send(f"Protection update attempted for \"{episode}\"",
-                    f"```json\n{json.dumps(R.text.json(), indent=2)}\n```",
+                    f"```json\n{json.dumps(json.loads(R.text), indent=2)}\n```",
                     16711680)
 
 
@@ -42,7 +42,7 @@ def updSpoiler(episode: str, mode: int):
     })
 
     action_fox.send(f"Downloaded page for the spoiler doctrine",
-                    f"",
+                    f"_{SPOILER}_",
                     5814783)
 
     page_cont = page.json()["query"]["pages"][0]["revisions"][0]["slots"]["main"]["content"]
@@ -71,8 +71,8 @@ def updSpoiler(episode: str, mode: int):
         "text": page_cont
     }
     R = S.post(URL, data=PARAMS)
-    action_fox.send(f"Spoiler doctrine update attempted for \"{episode}\", to:{to}",
-                    f"```json\n{json.dumps(R.text.json(), indent=2)}\n```",
+    action_fox.send(f"Spoiler doctrine update attempted for \"{episode}\" to:{to}",
+                    f"```json\n{json.dumps(json.loads(R.text), indent=2)}\n```",
                     16711680)
 
 
