@@ -1,14 +1,27 @@
 import os
 import dotenv
 import requests
+from datetime import datetime
 
 URL = "https://miraculousladybug.fandom.com/api.php"
 S = requests.Session()
 
-def auth():
-    if os.path.exists('.env'):
-        dotenv.load_dotenv()
+if os.path.exists('.env'):
+    dotenv.load_dotenv()
+os.environ["mw-csrf-exp"] = "0"
 
+
+def auth():
+    if int(os.environ["mw-csrf-exp"]) < int(datetime.timestamp(datetime.now())):
+        csrf = get_CSRF()
+        os.environ["mw-csrf"] = csrf
+        os.environ["mw-csrf-exp"] = str(int(datetime.timestamp(datetime.now())+2000))
+        return os.environ["mw-csrf"]
+    else:
+        return os.environ["mw-csrf"]
+
+
+def get_CSRF():
     # Step 1: Retrieve a login token
     PARAMS_1 = {
         "action": "query",
