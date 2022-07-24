@@ -41,7 +41,7 @@ threading.Thread(target=delt, args=(2, )).start()
 threading.Thread(target=delt, args=(3, )).start()
 threading.Thread(target=delt, args=(4, )).start()
 
-if (len(Lines)%4 != 0):
+if len(Lines)%4 != 0:
     for x in range(runs*4, len(Lines)):
         image = Lines[x].replace("\n", "")
         PARAMS = {

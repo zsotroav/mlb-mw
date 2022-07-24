@@ -161,5 +161,7 @@ cython_debug/
 
 # Others
 up/
+up*/
 upload/
+tres/
 deletelist.txt
