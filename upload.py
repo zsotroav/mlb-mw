@@ -30,6 +30,7 @@ def upload(threadn:int):
             S.post(URL, files=FILE, data=PARAMS_FILE)
 
             PARAMS = {
+                "bot": true,
                 "action": "edit",
                 "title": "File:" + filename,
                 "token": auth(),
