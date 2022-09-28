@@ -1,8 +1,9 @@
-from apscheduler.schedulers.blocking import BlockingScheduler
+
 from datetime import datetime
 from enum import Enum
 from auth import auth, URL, S
 from page_tools import get_page, set_page
+from episode_list import SPOILER
 import json
 import action_fox as action_fox
 
@@ -13,10 +14,6 @@ class Mode(Enum):
     WW = 2
 
 
-sched = BlockingScheduler()
-
-SPOILER = "Miraculous Ladybug Wiki:Spoiler Doctrine"
-
 
 def protect(episode: str):
     PARAMS = {
@@ -26,7 +23,7 @@ def protect(episode: str):
         "token": auth(),
         "action": "protect",
         "format": "json",
-        "reason": "BOT: The episode is scheduled to begin airing shortly."
+        "reason": "The episode is scheduled to begin airing shortly."
     }
     R = S.post(URL, data=PARAMS)
     action_fox.send(f"Protection update attempted for \"{episode}\"",
@@ -74,10 +71,3 @@ def episode_update(long: str, short: str, m: Mode):
         protect(long)
     updTmp(long, m)
     updSpoiler(short, m)
-
-
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 6, 21, 0, 30, 00), args=['Multiplication',
-                                                                                       'Multiplication',
-                                                                                       Mode.WW])
-
-sched.start()
