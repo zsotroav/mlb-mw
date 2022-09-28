@@ -1,14 +1,14 @@
 import threading
 from auth import auth, S, URL
 
-reason = "Unused file (Automatic)"
+reason = "Unused misnamed file"
 
 file1 = open('deletelist.txt', 'r')
 Lines = file1.readlines()
 TOKEN = auth()
 
 THREADS = 4
-runs = (int)(len(Lines)/THREADS)
+runs = int(len(Lines)/THREADS)
 
 
 def delt(threadn:int):
@@ -33,8 +33,9 @@ def delt(threadn:int):
             }
 
             R = S.post(URL, data=PARAMS)
-            print(R.json())
-            print(PARAMS)
+        else:
+            print(f"[WARN] USED IMAGE: {image}")
+
 
 for x in range(1, THREADS+1):
     threading.Thread(target=delt, args=(x,)).start()
