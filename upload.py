@@ -6,13 +6,13 @@ TOKEN = auth()
 directory = 'up'
 files = os.listdir(directory)
 
-THREADS = 2
+THREADS = 1
 runs = int(len(files)/THREADS)
 
 
 def upload(threadn:int):
     for x in range(0, runs):
-        filename = files[x*4+threadn-1]
+        filename = files[x*THREADS+threadn-1]
         f = os.path.join(directory, filename)
         if os.path.isfile(f):
             print(f)
@@ -30,13 +30,13 @@ def upload(threadn:int):
             S.post(URL, files=FILE, data=PARAMS_FILE)
 
             PARAMS = {
-                "bot": true,
+                "bot": True,
                 "action": "edit",
                 "title": "File:" + filename,
                 "token": auth(),
                 "format": "json",
                 "summary": "Adding categories and license",
-                "text": "{{Fairuse}}\n\n[[Category:Panini_comic_images]]"
+                "text": "{{Fairuse}}\n\n[[Category:Credits]]\n[[Category:Crew]]\n[[Category:Cast]]"
             }
             R = S.post(URL, data=PARAMS)
 
