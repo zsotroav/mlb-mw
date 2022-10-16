@@ -5,6 +5,7 @@ from auth import auth, URL, S
 from page_tools import get_page, set_page
 import json
 import action_fox as action_fox
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 SPOILER = "Miraculous Ladybug Wiki:Spoiler Doctrine"
@@ -72,3 +73,11 @@ def episode_update(long: str, short: str, m: Mode):
         protect(long)
     updTmp(long, m)
     updSpoiler(short, m)
+
+
+sched = BlockingScheduler()
+
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 18, 00, 30, 00), args=['Destruction',
+                                                                                       'Destruction',
+                                                                                       Mode.WW])
+sched.start()
