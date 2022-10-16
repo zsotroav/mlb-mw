@@ -3,10 +3,11 @@ from datetime import datetime
 from enum import Enum
 from auth import auth, URL, S
 from page_tools import get_page, set_page
-from episode_list import SPOILER
 import json
 import action_fox as action_fox
 
+
+SPOILER = "Miraculous Ladybug Wiki:Spoiler Doctrine"
 
 class Mode(Enum):
     FULL = 0
