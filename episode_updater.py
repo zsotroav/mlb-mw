@@ -77,7 +77,15 @@ def episode_update(long: str, short: str, m: Mode):
 
 sched = BlockingScheduler()
 
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 18, 00, 30, 00), args=['Destruction',
-                                                                                       'Destruction',
+
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 25, 00, 30, 00), args=['Jubilation',
+                                                                                       'Jubilation',
                                                                                        Mode.WW])
+
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 26, 12, 00, 00), args=['Jubilation',
+                                                                                       'Jubilation',
+                                                                                       Mode.ENG])
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 29, 12, 00, 00), args=['Multiplication',
+                                                                                       'Multiplication',
+                                                                                       Mode.FULL])
 sched.start()
