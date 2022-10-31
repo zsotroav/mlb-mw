@@ -78,15 +78,17 @@ def episode_update(long: str, short: str, m: Mode):
 sched = BlockingScheduler()
 
 
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 28, 10, 50, 00), args=['Determination',
-                                                                                       'Determination',
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 01, 10, 10, 00), args=['Reunion',
+                                                                                       'Reunion',
+                                                                                       Mode.WW])
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 02, 10, 10, 00), args=['Illusion',
+                                                                                       'Illusion',
                                                                                        Mode.WW])
 
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 29, 14, 00, 00), args=['Jubilation',
-                                                                                       'Jubilation',
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 05, 14, 00, 00), args=['Illusion',
+                                                                                       'Illusion',
                                                                                        Mode.ENG])
-
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 10, 29, 14, 00, 30), args=['Multiplication',
-                                                                                       'Multiplication',
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 05, 14, 00, 10), args=['Destruction',
+                                                                                       'Destruction',
                                                                                        Mode.FULL])
 sched.start()
