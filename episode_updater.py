@@ -78,17 +78,17 @@ def episode_update(long: str, short: str, m: Mode):
 sched = BlockingScheduler()
 
 
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 01, 10, 10, 00), args=['Reunion',
-                                                                                       'Reunion',
-                                                                                       Mode.WW])
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 02, 10, 10, 00), args=['Illusion',
-                                                                                       'Illusion',
-                                                                                       Mode.WW])
-
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 05, 14, 00, 00), args=['Illusion',
-                                                                                       'Illusion',
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 12, 14, 0, 0), args=['Determination',
+                                                                                       'Determination',
                                                                                        Mode.ENG])
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 05, 14, 00, 10), args=['Destruction',
-                                                                                       'Destruction',
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 12, 14, 0, 10), args=['Jubilation',
+                                                                                       'Jubilation',
+                                                                                       Mode.FULL])
+
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 19, 14, 0, 0), args=['Passion',
+                                                                                       'Passion',
+                                                                                       Mode.ENG])
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 19, 14, 0, 10), args=['Illusion',
+                                                                                       'Illusion',
                                                                                        Mode.FULL])
 sched.start()
