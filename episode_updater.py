@@ -78,17 +78,24 @@ def episode_update(long: str, short: str, m: Mode):
 sched = BlockingScheduler()
 
 
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 12, 14, 0, 0), args=['Determination',
-                                                                                       'Determination',
-                                                                                       Mode.ENG])
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 12, 14, 0, 10), args=['Jubilation',
-                                                                                       'Jubilation',
-                                                                                       Mode.FULL])
-
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 19, 14, 0, 0), args=['Passion',
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 19, 8, 30, 0), args=['Passion',
                                                                                        'Passion',
                                                                                        Mode.ENG])
-sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 19, 14, 0, 10), args=['Illusion',
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 19, 8, 30, 10), args=['Illusion',
                                                                                        'Illusion',
+                                                                                       Mode.FULL])
+
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 26, 8, 30, 0), args=['Reunion',
+                                                                                       'Reunion',
+                                                                                       Mode.ENG])
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 11, 26, 8, 30, 10), args=['Determination',
+                                                                                       'Determination',
+                                                                                       Mode.FULL])
+
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 12, 3, 8, 30, 0), args=['Passion',
+                                                                                       'Passion',
+                                                                                       Mode.ENG])
+sched.add_job(episode_update, 'date', run_date=datetime(2022, 12, 3, 8, 30, 10), args=['Elation',
+                                                                                       'Elation',
                                                                                        Mode.FULL])
 sched.start()
