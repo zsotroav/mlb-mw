@@ -22,23 +22,13 @@ def upload(threadn:int):
                 "filename": filename,
                 "format": "json",
                 "token": TOKEN,
-                "ignorewarnings": 1
+                "ignorewarnings": 1,
+                "text": ""
             }
 
             FILE = {'file': (filename, open(f, 'rb'), 'multipart/form-data')}
 
             S.post(URL, files=FILE, data=PARAMS_FILE)
-
-            PARAMS = {
-                "bot": True,
-                "action": "edit",
-                "title": "File:" + filename,
-                "token": auth(),
-                "format": "json",
-                "summary": "Adding categories and license",
-                "text": "{{Fairuse}}\n\n[[Category:Credits]]\n[[Category:Crew]]\n[[Category:Cast]]"
-            }
-            R = S.post(URL, data=PARAMS)
 
 
 for x in range(1, THREADS+1):

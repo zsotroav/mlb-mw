@@ -3,13 +3,14 @@ import dotenv
 import requests
 from datetime import datetime
 
-URL = "https://miraculousladybug.fandom.com/api.php"
 S = requests.Session()
 
 if os.path.exists('.env'):
     dotenv.load_dotenv()
 os.environ["mw-csrf-exp"] = "0"
 
+
+URL = os.getenv("URL")
 
 def auth():
     if int(os.environ["mw-csrf-exp"]) < int(datetime.timestamp(datetime.now())):
